@@ -25,43 +25,6 @@ class Entry extends Component {
     handleSubmit(){
     }
 
-    componentDidMount(){
-        /*axios({
-            method: 'get',
-            url: '/parent',
-            timeout: 5000 })
-            .then(res => {
-
-                console.log(res);
-                this.reverseGeocode();
-
-            })
-            .catch(err => {
-                console.error('ERROR:', err);
-            });*/
-        let loc = {
-            longitude:this.state.longitude,
-            latitude:this.state.latitude
-        };
-
-        let latlng = loc.latitude.toString() + ',' + loc.longitude.toString();
-        let key = 'AIzaSyC4xYqoJ2z76xP1hEu8B4AG9otpRL7mxec';
-        var url = 'https://maps.googleapis.com/maps/api/geocode/json?latlng=' + latlng + '&key=' + key;
-        axios({
-            method: 'get',
-            url: url,
-            timeout: 5000
-        })
-            .then(res => {
-                console.log(res.data.results[0].formatted_address);
-                let addr = res.data.results[0].formatted_address;
-                this.setState({ startInput: addr });
-            })
-            .catch(err => {
-                console.error('ERROR:', err);
-            });
-    }
-
 
     render() {
         return (
@@ -71,22 +34,12 @@ class Entry extends Component {
                 </Typography>
                 <form onSubmit={this.handleSubmit}>
                     <TextField
-                        id="startInput"
-                        value={this.state.startInput}
-                        label="Start"
-                        margin="normal"
-                        InputProps={{
-                            readOnly: true,
-                        }}/>
-                    <p/>
-                    <TextField
                         id="end"
                         label="Destination"
                         margin="normal"/>
                     <p/>
                     <Button type="submit" variant="contained" color="primary" onClick={()=>{this.handleClick()}}>Go</Button>
                 </form>
-                <Button onClick={this.onButtonChange}>Get current location</Button>
                 <GoogleMap
                     defaultCenter={{ lat: this.state.longitude, lng: this.state.latitude}}
                     zoom={3}

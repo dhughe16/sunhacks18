@@ -1,7 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const cors = require('cors');
 const knex = require('knex');
+const cors = require('cors');
 
 const db = knex({
     client: 'pg',
@@ -13,23 +13,27 @@ const db = knex({
     }
 });
 
+let datab = {
+    lat:'',
+    long:''
+}
+
 const app = express();
 
 app.use(cors());
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
-app.get('/driver',(req,res)=>{
-    db('location').insert({lat: req.body.lat,long: req.body.long})
-        .then( function (res) {
-            res.json({ success: true, message: 'ok' });
-        })
+app.post('/driver',(req,res)=>{
+    console.log(req.body);
+    datab.lat = parseFloat(req.body.lat);
+    datab.long = parseFloat(req.body.long);
 })
 
 app.get('/parent',(req,res)=>{
-    return db.select('*').from('location')
-        .then(location => {
-            res.json(location[0])
-        })
+    if(datab.lat!=0 && datab.long!=0)
+        res.send({lat: datab.lat,long: datab.long})
+
 })
 
 app.listen(3000,()=>console.log('app is running on port 3000'));
