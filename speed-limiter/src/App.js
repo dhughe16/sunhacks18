@@ -3,6 +3,7 @@ import './App.css';
 import Entry from './Entry';
 import Bar from './Bar';
 import MapWithControlledZoom from './ReactMap';
+import Paper from '@material-ui/core/Paper'
 
 class App extends Component {
   render() {
@@ -10,8 +11,10 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
             <Bar/>
+            <p/>
             <Entry/>
-            <MapWithControlledZoom/>
+            <p/>
+            <Paper><MapWithControlledZoom/></Paper>
         </header>
       </div>
     );

@@ -1,4 +1,5 @@
 import React from 'react';
+import Paper from '@material-ui/core/Paper';
 import axios from 'axios';
 
 const { compose, withProps, withState, withHandlers } = require("recompose");
@@ -34,18 +35,20 @@ const MapWithControlledZoom = compose(
     withScriptjs,
     withGoogleMap
 )(props =>
+    <Paper>
     <GoogleMap
-        defaultCenter={{ lat: -34.397, lng: 150.644 }}
+        defaultCenter={{ lat: 0, lng: 0}}
         zoom={props.zoom}
         ref={props.onMapMounted}
         onZoomChanged={props.onZoomChanged}
     >
         <Marker
-            position={{ lat: -34.397, lng: 150.644 }}
+            position={{ lat: 0, lng: 0 }}
             onClick={props.onToggleOpen}
         >
         </Marker>
     </GoogleMap>
+    </Paper>
 );
 
 export default MapWithControlledZoom;
