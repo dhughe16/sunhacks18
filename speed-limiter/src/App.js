@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import './App.css';
+import './styles/reset.css'
+import './styles/App.css';
 import Entry from './Entry';
 import Bar from './Bar';
+import ActionBar from "./ActionBar";
 
 class App extends Component {
   render() {
@@ -11,6 +13,8 @@ class App extends Component {
             <Bar/>
             <p/>
             <Entry/>
+            <p/>
+            <ActionBar/>
         </header>
       </div>
     );

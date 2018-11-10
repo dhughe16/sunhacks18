@@ -1,0 +1,11 @@
+div {
+    text-align: center;
+    padding-top: .1em;
+    z-index: 1;
+}
+
+GoogleMaps {
+    height:70%;
+    position:relative;
+    z-index: -1;
+}

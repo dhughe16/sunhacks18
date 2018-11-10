@@ -4,11 +4,7 @@
  */
 
 import React, { Component } from "react";
-import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
-import Paper from '@material-ui/core/Paper'
-import axios from 'axios';
+import './styles/entry.css';
 import GoogleMap from './Map';
 import Marker from './Map';
 
@@ -28,18 +24,7 @@ class Entry extends Component {
 
     render() {
         return (
-            <Paper>
-                <Typography component="h2" variant="h5" gutterBottom>
-                    Enter desired destination below
-                </Typography>
-                <form onSubmit={this.handleSubmit}>
-                    <TextField
-                        id="end"
-                        label="Destination"
-                        margin="normal"/>
-                    <p/>
-                    <Button type="submit" variant="contained" color="primary" onClick={()=>{this.handleClick()}}>Go</Button>
-                </form>
+            <div>
                 <GoogleMap
                     defaultCenter={{ lat: this.state.longitude, lng: this.state.latitude}}
                     zoom={3}
@@ -49,7 +34,19 @@ class Entry extends Component {
                     >
                     </Marker>
                 </GoogleMap>
-            </Paper>
+                <p/>
+                <h5>
+                    Enter desired destination below
+                </h5>
+                <form onSubmit={this.handleSubmit}>
+                    <input
+                        id="end"
+                        label="Destination"
+                        margin="normal"/>
+                    <p/>
+                    <button type="submit" variant="contained" color="primary" onClick={()=>{this.handleClick()}}>Go</button>
+                </form>
+            </div>
         );
     }
 }

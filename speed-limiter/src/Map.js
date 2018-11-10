@@ -1,6 +1,5 @@
 import React from 'react';
 import {Map, Marker, GoogleApiWrapper} from 'google-maps-react';
-import Button from '@material-ui/core/Button'
 
 export class MapContainer extends React.Component {
 
@@ -8,8 +7,8 @@ export class MapContainer extends React.Component {
   {
     super();
     this.state={
-      lat:0,
-      long:0,
+        lat:33.4169217,
+        long:-111.9450617,
       endlat:0,
       endlong:0
     }
@@ -48,14 +47,14 @@ export class MapContainer extends React.Component {
 
   render() {
     return (
-      <div>
-      <Button variant="contained" color="primary" onClick={this.onButtonChange}>Get Current Location</Button>
-      <Map google={this.props.google} initialCenter={{lat:0,lng:0}} center={{lat:this.state.lat,lng:this.state.long}}zoom={14}>
+      <div id={"map"}>
+      <Map google={this.props.google} initialCenter={{lat:33.4169217,lng:-111.9450617}} center={{lat:this.state.lat,lng:this.state.long}}zoom={14}>
 
         <Marker onClick={this.onMarkerClick}
                 position={{lat:this.state.lat,lng:this.state.long}}name={'Current location'} />
 
       </Map>
+          <button variant="contained" color="primary" onClick={this.onButtonChange}>Get Current Location</button>
       </div>
     );
   }
