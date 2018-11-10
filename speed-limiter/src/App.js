@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Entry from './Entry';
 import Bar from './Bar';
+import MapWithControlledZoom from './ReactMap';
 
 class App extends Component {
   render() {
@@ -10,6 +11,7 @@ class App extends Component {
         <header className="App-header">
             <Bar/>
             <Entry/>
+            <MapWithControlledZoom/>
         </header>
       </div>
     );

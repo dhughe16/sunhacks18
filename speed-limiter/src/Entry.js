@@ -24,11 +24,12 @@ class Entry extends Component {
     componentDidMount(){
         axios({
             method: 'get',
-            url: '/',
+            url: '/parent',
             timeout: 5000 })
             .then(res => {
-                const location= res.data;
-                this.setState({ location: location });
+
+                console.log(res);
+
             })
             .catch(err => {
                 console.error('ERROR:', err);
