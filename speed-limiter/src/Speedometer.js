@@ -6,9 +6,6 @@
 import React, { Component } from "react";
 
 class Speedometer extends Component {
-    constructor() {
-        super();
-    }
 
     draw(speed)
     {
@@ -42,7 +39,7 @@ class Speedometer extends Component {
             var sineAngle = Math.sin(angle);
             var cosAngle = -Math.cos(angle);
 
-            if (i % 5 == 0) {
+            if (i % 5 === 0) {
                 context.lineWidth = 8;
                 var iPointX = sineAngle *(radius -radius/4);
                 var iPointY = cosAngle *(radius -radius/4);
@@ -91,28 +88,14 @@ class Speedometer extends Component {
         context.translate(-centerX,-centerY);
     }
 
-    redraw()
-    {
-        this.draw(document.getElementById("myList").value);
-    }
-
-
     componentDidMount() {
 
     }
 
     render() {
         return (
-            <div>
-                <select id="myList" onchange="redraw();">
-                    <option value="120">Speed = 120</option>
-                    <option value="30">Speed = 30</option>
-                    <option value="50">Speed = 50</option>
-                    <option value="60">Speed = 60</option>
-                    <option value="140">Speed = 140</option>
-                    <option value="160">Speed = 160</option>
-                </select>
-            </div>
+            <canvas className="canvas" id="myCanvas" width="600" height="600">
+                Your browser does not support the HTML5 canvas tag.</canvas>
         );
     }
 }

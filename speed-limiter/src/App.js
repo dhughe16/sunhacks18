@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import './App.css';
 import Entry from './Entry';
 import Bar from './Bar';
-import Speedometer from './Speedometer';
 
 class App extends Component {
   render() {
