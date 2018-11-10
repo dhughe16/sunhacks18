@@ -18,7 +18,6 @@ class Entry extends Component {
             longitude:0,
             startInput: ''};
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.onButtonChange = this.onButtonChange.bind(this);
     }
 
     handleSubmit(){
@@ -85,12 +84,6 @@ class Entry extends Component {
             });
     }
 
-    onButtonChange(){
-        fetch('https://localhost:3000/driver')
-            .then(response => response.json())
-            .then(data=>this.setState({latitude:data.lat,longitude:data.long}))
-
-    }
 
     render() {
         return (
@@ -115,7 +108,6 @@ class Entry extends Component {
                     <p/>
                     <Button type="submit" variant="contained" color="primary" onClick={()=>{this.handleClick()}}>Go</Button>
                 </form>
-                <Button onClick={this.onButtonChange}>Get current location</Button>
             </Paper>
         );
     }
